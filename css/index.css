@@ -226,7 +226,7 @@ div.nav a:hover {
 div.main-footer {
     margin: 20px 0 0 0;
     background: #222;
-    border-top: 3px #1963a2 solid;
+    border-top: 3px #009688 solid;
 }
 div.main-footer .logo {
     color: #eee;
@@ -357,7 +357,7 @@ div.posts-footer {
     color: #009688;
 }
 .posts-footer a:hover {
-    color: #1963a2;
+    color: #009688;
     text-shadow: 0px 0px 10px #1963a2;
 }
 .posts .read {
@@ -709,7 +709,7 @@ ul.para {
   content: "";
   width: 90px;
   height: 1px;
-  background: #1963a2;
+  background: #009688;
   position: absolute;
   left: 0;
   bottom: -1px;
