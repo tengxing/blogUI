@@ -11,8 +11,12 @@
     <title>Starry Blog</title>
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/bubble.js"></script>
+    <!-- <script src="index.js"/> -->
+    
+
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+
 </head>
 <body style="background-color: #f9f9f9;">
     <!--[if lt IE 9]>
@@ -152,23 +156,12 @@
                         <div class="widget">
                             <h4 class="title">分类</h4>
                              <div class="content tag-cloud">
+                                <div id="blogCategory"></div>
                                         
-                                            <a href="/blog/index.html?typeId=8">spring</a>
+                                           
                                         
-                                            <a href="/blog/index.html?typeId=2">mybatis</a>
-                                        
-                                            <a href="/blog/index.html?typeId=1">jhhc方法对方的</a>
-                                        
-                                            <a href="/blog/index.html?typeId=5">big data</a>
-                                        
-                                            <a href="/blog/index.html?typeId=10">tensorflow</a>
-                                        
-                                            <a href="/blog/index.html?typeId=7">jpa</a>
-                                        
-                                            <a href="/blog/index.html?typeId=9">随笔</a>
-                                        
-                                            <a href="more/">...</a>
-                                    </div>
+                                 <a href="more/">...</a>           
+                               </div>
                         </div>
                         <!-- end tag cloud widget -->   
                         <!-- start tag line widget -->
@@ -217,5 +210,23 @@
 
         <a href="http://www.ghostchina.com/#" id="back-to-top" style="display: none;"><i class="fa fa-angle-up"></i></a>
         <!-- footer end -->
+
+        <script type="text/javascript">
+        function getBlogCategory() {
+    // body...
+     $.get("http://localhost:3000/blog/getBlogCategory", function(result){
+        
+        html=''
+        for (var i = result.length - 1; i >= 0; i--) {
+            html+='<a href="http://yjxxclub.cn/blog/index.html?typeId='+result[i]["id"]+'">'+result[i]["typeName"]+'</a>';
+        }
+        $("#blogCategory").html(html);
+  });
+}
+
+
+getBlogCategory();
+    </script>
+        
 </body>
 </html>
