@@ -7,6 +7,13 @@
     -webkit-transition-duration: 0.5s; /* Safari 和 Chrome */
     -o-transition-duration: 0.5s; /* Opera */
 }
+.pagination>.active>a{
+    background-color: #009688;
+    border-color: #009688;
+}.pagination>li>a{
+
+    color: #009688;
+}
 .normal {
     font-weight: normal;
 }
@@ -35,10 +42,9 @@ body {
     font-weight: 300;
 }
 .sidebar-content {
-    padding: 20px;
-    padding-top: 10px;
+    padding: 0 20px;
     background-color: #f8f8f8;
-    box-shadow: 0 1px 2px #aaa;
+    /*box-shadow: 0 1px 2px #aaa;*/
 }
 
 .nav-sidebar {
@@ -73,7 +79,7 @@ div .sidebar sup {
 }
 div .sidebar form {
     width: 100%;
-    margin: 7px 0 15px 0;
+    margin: 0px 0 15px 0;
 }
 div .sidebar #search {
     width: 64%;
@@ -88,7 +94,7 @@ div .sidebar button {
 
 .red-btn {
     display: inline-block;
-    background: rgb(49, 163, 203);
+    background: #009688;
     color: #fafafa;
     padding: 5px 10px;
     border-radius: 2px;
@@ -154,7 +160,7 @@ div .sidebar button {
 .main-header {
     top:0;
     width: 100%;
-    background: #1963a2 url(../pics/home.jpg);
+    background: #009688 url(../pics/home.jpg);
     background-size: cover;
     margin-bottom:1px;
     border-bottom: 2px #fafafa solid;
@@ -302,7 +308,7 @@ div.posts {
     background:#ffffff;
     margin-bottom: 30px;
     padding: 20px 35px 15px 35px;
-    box-shadow: 0 1px 2px #aaa;
+    /*box-shadow: 0 1px 2px #aaa;*/
     overflow: hidden;
 }
 @media (max-width: 768px) {
@@ -317,7 +323,7 @@ div h4.posts-title {
     font-size: 24px;
 }
 div h4.posts-title a {
-    color: #31a3cb;
+    color: #009688;
     font-weight: 300;
 }
 div h4.posts-title a:hover {
@@ -343,12 +349,12 @@ div.posts p.time {
 }
 div.posts-footer {
     border-top: 1px #ddd solid;
-    padding: 20px 0;
+    padding-top: 8px;
     color: #959595
 }
 
 .posts-footer a {
-    color: #71a3cb;
+    color: #009688;
 }
 .posts-footer a:hover {
     color: #1963a2;
@@ -596,6 +602,7 @@ ul.para {
   border-bottom: 1px solid #ebebeb;
   margin-bottom: 21px;
   position: relative;
+  color: #009688;
 }
 .widget .title:after {
   content: "";
@@ -759,8 +766,15 @@ ul.para {
   border-bottom: 2px solid #e1e1e1;
 }
 .main-navigation .menu {
+  float: right;
   padding: 0;
   margin: 0;
+}.main-navigation .logo {
+  float: left;
+  padding-top: 1px;
+  font-weight: bold;
+  margin: 0;
+  font-size: 32px;
 }
 .main-navigation .menu li {
   list-style: none;
@@ -768,7 +782,7 @@ ul.para {
   position: relative;
 }
 .main-navigation .menu li.nav-current {
-  border-bottom: 2px solid #1963a2;
+  border-bottom: 2px solid #009688;
   margin-bottom: -2px;
 }
 .main-navigation .menu li a {
