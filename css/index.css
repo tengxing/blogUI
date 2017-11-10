@@ -345,7 +345,7 @@ div.posts p.time {
     text-align: center;
     height:  auto;
     padding-top: 5px;
-    padding-bottom: 15px;
+    padding-bottom: 0px;
     font-size: 14px;
     color: rgb(149, 149, 149);
 }
