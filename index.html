@@ -76,43 +76,7 @@
                     <!-- 左半部分 -->
                     <div class="col-md-8 main-content">
                         <!-- 文章start -->
-                        <div class="posts animation">
-                                    <h4 class="posts-title">
-                                        <a href="/blog/blog/articles/19.html" class="animation">tensorflow 二进制数据集详解</a>
-                                    </h4>
-                                    <p class="time">作者 遇见小星 &nbsp; 2017-02-18</p>
-                                    <p class="descript">Tensorflow数据读取有三种方式：Preloaded data: 预加载数据Feeding: Python产生数据，再把数据喂给后端。Reading from file: 从文件中直接读取一、预加载数据：import tensorflow as tf# 设计Graphx1 = tf.constant([</p>
-                                    <div class="posts-footer">分类:
-                                        <a class="class animation" href="/blog/blog/articles/19.html">推荐阅读</a>&nbsp;\
-                                        <a class="class animation" href="/blog/blog/articles/19.html">tensorflow</a>
-                                    </div>
-                                </div>
-                        <!-- 文章end -->
-                       <!-- 文章start -->
-                        <div class="posts animation">
-                                    <h4 class="posts-title">
-                                        <a href="/blog/blog/articles/19.html" class="animation">tensorflow 二进制数据集详解</a>
-                                    </h4>
-                                    <p class="time">作者 遇见小星 &nbsp; 2017-02-18</p>
-                                    <p class="descript">Tensorflow数据读取有三种方式：Preloaded data: 预加载数据Feeding: Python产生数据，再把数据喂给后端。Reading from file: 从文件中直接读取一、预加载数据：import tensorflow as tf# 设计Graphx1 = tf.constant([</p>
-                                    <div class="posts-footer">分类:
-                                        <a class="class animation" href="/blog/blog/articles/19.html">推荐阅读</a>&nbsp;\
-                                        <a class="class animation" href="/blog/blog/articles/19.html">tensorflow</a>
-                                    </div>
-                                </div>
-                        <!-- 文章end -->
-                        <!-- 文章start -->
-                        <div class="posts animation">
-                                    <h4 class="posts-title">
-                                        <a href="/blog/blog/articles/19.html" class="animation">tensorflow 二进制数据集详解</a>
-                                    </h4>
-                                    <p class="time">作者 遇见小星 &nbsp; 2017-02-18</p>
-                                    <p class="descript">Tensorflow数据读取有三种方式：Preloaded data: 预加载数据Feeding: Python产生数据，再把数据喂给后端。Reading from file: 从文件中直接读取一、预加载数据：import tensorflow as tf# 设计Graphx1 = tf.constant([</p>
-                                    <div class="posts-footer">分类:
-                                        <a class="class animation" href="/blog/blog/articles/19.html">推荐阅读</a>&nbsp;\
-                                        <a class="class animation" href="/blog/blog/articles/19.html">tensorflow</a>
-                                    </div>
-                                </div>
+                        <div id="getBlogList"></div>
                         <!-- 文章end -->
                         <!-- 分页start -->
                         <nav>
@@ -260,6 +224,13 @@ function initPage(){
             if (res.status==200) {
                 data = res.data;
                 count = res.count;
+
+                html=''
+                for (var i = data.length - 1; i >= 0; i--) {
+                       html+='<div class="posts animation"><h4 class="posts-title"><a href="http://yjxxclub.cn/blog/blog/articles/'+data[i]["id"]+'.html" class="animation">'+data[i]["title"]+'</a></h4><p class="time">'+(data[i]["auther"]?data[i]["auther"]:"博主")+' &nbsp; '+data[i]["releaseDate"]+'</p><p class="descript">'+data[i]["summary"]+'</p><div class="posts-footer">分类:<a class="class animation" href="/blog/blog/articles/19.html">推荐阅读</a>&nbsp;<a class="class animation" href="/blog/blog/articles/19.html">tensorflow</a></div></div>';
+                }
+                $("#getBlogList").html(html);
+
                 paginationStr = genPagination(baseUrl,count,page,size,"size=")
                 $(".pagination").html(paginationStr);
             }
