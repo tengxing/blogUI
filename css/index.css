@@ -13,6 +13,8 @@
 }.pagination>li>a{
 
     color: #009688;
+}.pagination>.active>a:hover{
+  background-color: #009688;
 }
 .normal {
     font-weight: normal;
