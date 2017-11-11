@@ -3,7 +3,7 @@ initPage();
 getBlogCategory();
 
 $("#blogDetile").css("display","none");
-var blogList = []
+var blogList = [],categoryList=[];
 
 //初始化分页
 function initPage(){
@@ -20,13 +20,13 @@ function initPage(){
                 count = res.count;
                 blogList = res.data;	
                 html=''
-                for (var i = data.length - 1; i >= 0; i--) {
+                for (var i = 0; i <=data.length - 1; i++) {
                        html+='<div class="posts animation"><h4 class="posts-title"><a href="javascript:;" onclick="blogDetil('+data[i]["id"]+');" class="animation">'
                        +data[i]["title"]+'</a></h4><p class="time">'
                        +(data[i]["auther"]?data[i]["auther"]:"博主")+' &nbsp; '
                        +data[i]["time"]+'</p><p class="descript">'
                        +data[i]["summary"]
-                       +'</p><div class="posts-footer">分类:<a class="class animation" href="/blog/blog/articles/19.html">推荐阅读</a>&nbsp;<a class="class animation" href="/blog/blog/articles/19.html">tensorflow</a></div></div>';
+                       +'</p><div class="posts-footer">分类:<a class="class animation" href="http://yjxxclub.cn/blog/index.html?typeId='+data[i]["typeId"]+'">'+data[i]["type"]+'</a>&nbsp;</div></div>';
                 }
                 $("#getBlogList").html(html);
 
@@ -50,7 +50,7 @@ function blogDetil(id) {
 	  data: {
 	    blog_title: blogDetile.title,
 	    blog_time:blogDetile.time,
-	    blog_type:blogDetile.typeId,
+	    blog_type:blogDetile.type,
 	    blog_content:blogDetile.content,
 	    blog_replyHit:blogDetile.replyHit,
 	    blog_tips:'前方评论区'
@@ -66,7 +66,7 @@ function blogDetil(id) {
 function getBlogCategory() {
     // body...
      $.get("http://localhost:3000/blog/getBlogCategory", function(result){
-        
+        categoryList = result;
         html=''
         for (var i = result.length - 1; i >= 0; i--) {
             html+='<a href="http://yjxxclub.cn/blog/index.html?typeId='+result[i]["id"]+'">'+result[i]["typeName"]+'</a>';
