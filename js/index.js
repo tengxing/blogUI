@@ -9,10 +9,16 @@ var blogList = [],categoryList=[];
 function initPage(){
     page = parseInt(GetQueryString("page"));
     size = parseInt((GetQueryString("size")==null||GetQueryString("size")=="" ? 5:GetQueryString("size")));
-    console.info(page+","+size)
+    typeId = GetQueryString("typeId");
+    data = {"page":page,"size":size};
+    if (typeId!=null) {
+    	data = {"page":page,"size":size,"typeId":typeId};
+    }
+    
+    console.info(page+","+size+","+typeId)
     $.ajax({
         url:"http://localhost:3000/blog/getBlogListByPage",
-        data:{"page":page,"size":size},
+        data:data,
         type:"get",
         success:function(res){
             if (res.status==200) {
@@ -29,8 +35,12 @@ function initPage(){
                        +'</p><div class="posts-footer">分类:<a class="class animation" href="http://yjxxclub.cn/blog/index.html?typeId='+data[i]["typeId"]+'">'+data[i]["type"]+'</a>&nbsp;</div></div>';
                 }
                 $("#getBlogList").html(html);
-
-                paginationStr = genPagination(baseUrl,count,page,size,"size=")
+                if (typeId!=null) {
+			    	paginationStr = genPagination(baseUrl,count,page,size,"typeId="+typeId+"&size=")
+			    }else{
+			    	 paginationStr = genPagination(baseUrl,count,page,size,"size=")
+			    }
+               
                 $(".pagination").html(paginationStr);
             }
         }
@@ -69,9 +79,9 @@ function getBlogCategory() {
         categoryList = result;
         html=''
         for (var i = result.length - 1; i >= 0; i--) {
-            html+='<a href="http://yjxxclub.cn/blog/index.html?typeId='+result[i]["id"]+'">'+result[i]["typeName"]+'</a>';
+            html+='<a href="'+baseUrl+'?page=1&typeId='+result[i]["id"]+'">'+result[i]["typeName"]+'</a>';
         }
-        html+='<a href="http://yjxxclub.cn/blog/index.html?typeId=more">...</a>'
+        html+='<a href="'+baseUrl+'?page=1&typeId=">...</a>'
         $("#blogCategory").html(html);
     });
 
