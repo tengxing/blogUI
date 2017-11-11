@@ -3,7 +3,7 @@ initPage();
 getBlogCategory();
 
 $("#blogDetile").css("display","none");
-
+var blogList = []
 
 //初始化分页
 function initPage(){
@@ -18,7 +18,7 @@ function initPage(){
             if (res.status==200) {
                 data = res.data;
                 count = res.count;
-
+                blogList = res.data;	
                 html=''
                 for (var i = data.length - 1; i >= 0; i--) {
                        html+='<div class="posts animation"><h4 class="posts-title"><a href="javascript:;" onclick="blogDetil('+data[i]["id"]+');" class="animation">'
@@ -38,6 +38,24 @@ function initPage(){
 }
 //博客详情
 function blogDetil(id) {
+	var blogDetile;
+	//forEach为js原生，jquery为$.each([], function(index, value, array) 
+	blogList.forEach(function(value, index, array) {
+  		if (id==value.id) {
+  			blogDetile = value;
+  		}
+	});
+	new Vue({
+	  el: '#blogDetile',
+	  data: {
+	    blog_title: blogDetile.title,
+	    blog_time:blogDetile.time,
+	    blog_type:blogDetile.typeId,
+	    blog_content:blogDetile.content,
+	    blog_replyHit:blogDetile.replyHit,
+	    blog_tips:'前方评论区'
+	  }
+	})
 	$("#blogDetile").css("display","block");
 	$(".pagination").css("display","none");
 	$("#getBlogList").css("display","none");

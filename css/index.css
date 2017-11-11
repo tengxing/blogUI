@@ -19,12 +19,21 @@
 .normal {
     font-weight: normal;
 }
+hr{
+    margin-top: 2px; 
+    margin-bottom: 5px;
+}
 a{
     text-decoration: none;
     color: #31a3cb;
 }
 a:hover{
     text-decoration: none;
+}
+.data_list{
+  background-color: #ffffff;
+    padding: 15px 33px;
+    margin-top: 40px;
 }
 
 body {

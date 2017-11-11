@@ -98,37 +98,35 @@
                         <!-- start -->
                             <div class="data_list">
     <div class="data_list_title">
-        <img src="/blog/static/images/blog_show_icon.png"/>
+        <img src="images/blog_show_icon.png"/>
         博客信息
     </div>
     <div>
-       <div class="blog_title"><h3><strong>springmvc</strong></h3></div>
-       <div style="padding-left: 330px;padding-bottom: 20px;padding-top: 10px">
-        <div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+       <div class="blog_title" style="    color: #009688;
+    text-align: center;">
+            <h3><strong>{{ blog_title }}</strong></h3>
        </div>
-        <div class="blog_info">
-            发布时间：『 2017-02-06 20:34』&nbsp;&nbsp;博客类别：mybatis&nbsp;&nbsp;阅读(1) 评论(0)
+       <!-- <div style="padding-left: 330px;padding-bottom: 20px;padding-top: 10px">
+        <div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script> 
+       </div>-->
+        <div class="blog_info" style="text-align: center;
+    color: #72a7a2;">
+
+            发布时间：『 {{blog_time}}』&nbsp;&nbsp;博客类别：{{blog_type}}&nbsp;&nbsp;阅读({{blog_replyHit}}) 评论(0)
         </div>
-        <div class="blog_content">
-            <p>肥嘟嘟</p>
+        <div class="blog_content" style="margin-top: 51px;">
+            <p v-html="blog_content"></p>
         </div>
-        <div class="blog_keyWord">
-            <font><strong>关键字：</strong></font>
-            
-                
-                    &nbsp;&nbsp;无
-                
-                
-            
-        </div>
-        <div class="blog_lastAndNextPage">
+       
+        <!-- <div class="blog_lastAndNextPage">
             <p>上一篇:<a href='/blog/blog/articles/4.html'>springboot</a></p><p>下一篇:<a href='/blog/blog/articles/6.html'>骑行人生</a></p>
-        </div>
+        </div> -->
     </div>
 </div>
+
 <div class="data_list">
     <div class="data_list_title">
-        <img src="/blog/static/images/comment_icon.png"/>
+        <img src="images/comment_icon.png"/>
         评论信息
         
     </div>
@@ -144,18 +142,25 @@
 
 <div class="data_list" >
     <div class="data_list_title">
-        <img src="/blog/static/images/publish_comment_icon.png"/>
+        <img src="images/publish_comment_icon.png"/>
         发表评论
     </div>
-    <div class="publish_comment">
+    <div class="publish_comment"  style="padding-top: 10px">
             <div>
                 <textarea style="width: 100%" rows="3" id="content" name="content" placeholder="来说两句吧..."></textarea>
             </div>
-            <div class="verCode">
-                验证码：<input type="text" value="" name="imageCode"  id="imageCode" size="10" onkeydown= "if(event.keyCode==13)form1.submit()"/>&nbsp;<img onclick="javascript:loadimage();"  title="换一张试试" name="randImage" id="randImage" src="/blog/image.jsp" width="60" height="20" border="1" align="absmiddle">
+            <div class="verCode" style="padding: 8px 0;">
+                <input style="min-width:200px;" placeholder="姓名" type="text" value="" name="name"/>&nbsp;
+            </div>
+            <div class="verCode" style="padding: 8px 0;">
+                <input style="min-width:200px;" placeholder="电子邮箱,地址不会被公开" type="text" value="" name="mail"/>&nbsp;
             </div>
             <div class="publishButton">
-                <button class="btn btn-primary" type="button" onclick="submitData()">发表评论</button>
+                <button class="btn btn-primary" type="button" style="
+    color: #fff;
+    background-color: #009688;
+    border-color: #009688;
+" onclick="submitData()">发表评论</button>
             </div>
         </form>
     </div>
@@ -249,13 +254,14 @@
                         版权所有
                     </a>
                     |
-                    <a href="#">
+                    <a href="http://yjxxclub.cn/blog/admin">
                         Admin
                     </a>
                 </h5>
             </div>
             <!-- footer end -->
             <script src="js/index.js"></script>
+            <script type="text/javascript" src="js/vue.min.js"></script>
         </div>
     </body>
 </html>
