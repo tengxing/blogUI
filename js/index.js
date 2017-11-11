@@ -10,12 +10,16 @@ function initPage(){
     page = parseInt(GetQueryString("page"));
     size = parseInt((GetQueryString("size")==null||GetQueryString("size")=="" ? 5:GetQueryString("size")));
     typeId = GetQueryString("typeId");
+    date = GetQueryString("date");
     data = {"page":page,"size":size};
     if (typeId!=null) {
     	data = {"page":page,"size":size,"typeId":typeId};
     }
+    if (date!=null) {
+    	data = {"page":page,"size":size,"date":date};
+    }
     
-    console.info(page+","+size+","+typeId)
+    console.info(page+","+size+","+typeId+","+date)
     $.ajax({
         url:"http://localhost:3000/blog/getBlogListByPage",
         data:data,
@@ -37,6 +41,8 @@ function initPage(){
                 $("#getBlogList").html(html);
                 if (typeId!=null) {
 			    	paginationStr = genPagination(baseUrl,count,page,size,"typeId="+typeId+"&size=")
+			    }else if (date!=null) {
+			    	paginationStr = genPagination(baseUrl,count,page,size,"date="+date+"&size=")
 			    }else{
 			    	 paginationStr = genPagination(baseUrl,count,page,size,"size=")
 			    }
@@ -88,7 +94,7 @@ function getBlogCategory() {
      $.get("http://localhost:3000/blog/getBlogCount", function(result){
         html=''
         for (var i = result.length - 1; i >= 0; i--) {
-            html+='<li class=""><a href="http://yjxxclub.cn/blog/index.html?releaseDateStr='+result[i]["date"]+'">'+result[i]["date"]+'<sup>'+result[i]["count"]+'</sup></a></li>';
+            html+='<li class=""><a href="'+baseUrl+'?page=1&date='+formatDate(result[i]["date"])+'">'+result[i]["date"]+'<sup>'+result[i]["count"]+'</sup></a></li>';
         }
         $("#getBlogCount").html(html);
      });
@@ -149,5 +155,10 @@ function genPagination(targetUrl,totalNum,currentPage,pageSize,param){
             return pageCode.toString();
         }
 
-    }
+}
+
+ //format:2017年03月 ----> 2017-03
+ function formatDate(date) {
+ 	return date.substring(0,4)+"-"+date.substring(5,7);
+ }
 
