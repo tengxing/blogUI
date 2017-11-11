@@ -21,7 +21,7 @@ function initPage(){
     
     console.info(page+","+size+","+typeId+","+date)
     $.ajax({
-        url:"http://localhost:3000/blog/getBlogListByPage",
+        url:serverUrl+"blog/getBlogListByPage",
         data:data,
         type:"get",
         success:function(res){
@@ -81,7 +81,7 @@ function blogDetil(id) {
 //博客分类
 function getBlogCategory() {
     // body...
-     $.get("http://localhost:3000/blog/getBlogCategory", function(result){
+     $.get(serverUrl+"blog/getBlogCategory", function(result){
         categoryList = result;
         html=''
         for (var i = result.length - 1; i >= 0; i--) {
@@ -91,7 +91,7 @@ function getBlogCategory() {
         $("#blogCategory").html(html);
     });
 
-     $.get("http://localhost:3000/blog/getBlogCount", function(result){
+     $.get(serverUrl+"blog/getBlogCount", function(result){
         html=''
         for (var i = result.length - 1; i >= 0; i--) {
             html+='<li class=""><a href="'+baseUrl+'?page=1&date='+formatDate(result[i]["date"])+'">'+result[i]["date"]+'<sup>'+result[i]["count"]+'</sup></a></li>';
