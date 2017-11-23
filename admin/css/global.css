@@ -1,0 +1,286 @@
+/*全局样式*/
+body {
+    color: #444;
+}
+
+.layui-header {
+    text-align: center;
+}
+
+.sys-title {
+    display: inline-block;
+    line-height: 60px;
+    color: #fff;
+    text-shadow: 0 0 8px #1E9FFF,0 0 8px #009688;
+    font-size: 26px;
+    letter-spacing: 6px;
+    cursor: pointer;
+}
+.sys-body {}
+.sys-body-bg {
+    background-color: #eeeeee;
+}
+.sys-main {
+    margin: 15px;
+    line-height: 22px;
+}
+.layui-layout-admin .layui-footer{
+    background-color: #c3c1c1;
+}.layui-bg-litle{
+    background-color: #eeeeee;
+}
+.layui-tab-title li{
+    font-size: 20px;
+    padding: 0 60px;
+}
+#toggle{
+    padding-right: 20px;
+    font-size: 17px;
+    float: right;
+    margin-right: 10px;
+}.iframe-refresh{
+    font-size: 17px;
+    float: right;
+    margin-right: 10px;
+}.admin-header-lock{
+    padding: 25px;
+    background-color: white;
+}
+
+#pageNav{
+    text-align: right;
+}.fr{
+    float: right;
+}.layui-table th{
+    text-align: center;
+}
+
+/*
+*/
+.head-con {
+    color: #ffffff;
+    background-color: #009688;
+    text-align: left;
+    font-size: 20px;
+    border-radius: 4px;
+    border-bottom: 0px;
+    position: relative;
+}.sys-row{
+    background-color: white;
+    border-radius: 4px;
+    border-bottom: 0px;
+    padding: 10px 15px;
+}
+/*@media screen and (max-width: 1282px)
+.panel {
+    width: 33.3333%;
+}*/
+.panel {
+    padding: 30px 0px;
+    float: left;
+    text-align: center;
+    min-width: 210px;
+    margin: 10px 20px;
+    width: 80%;
+    background-color: #f2f2f2;
+}.col{
+    /*margin-left: 10px;*/
+}.panel_icon {
+    width: 40%;
+    display: inline-block;
+    /* padding: 22px 0; */
+    background-color: #f2f2f2;
+    color: #54ade8;
+    float: left;
+}.panel_word {
+    margin-top: 5px;
+    width: 60%;
+    display: inline-block;
+    float: right;
+    /* margin-top: 22px; */
+}.layui-col-md3{
+    padding: 15px 0px;
+}.face-box{
+    min-height: 500px;
+    width: 38%;
+    float: left;
+    margin: 0 5%;
+    padding-top: 63px;
+    background-color: #f6f5f5;
+}.similar-box{
+
+}
+
+
+
+.handle-box .handle-item {
+    margin: 5px 0;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.layui-header > img {
+    height: 100%;
+    width: auto;
+    margin-left: 70px;
+    float: left;
+}
+
+.layui-header > .layui-nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none;
+}
+
+ul.layui-nav-tree .fa {
+    padding-right: 10px;
+}
+
+ul.layui-nav-tree .layui-nav-child dd a {
+    padding-left: 43px;
+}
+
+.layui-tab-title li:first-child i {
+    display: none;
+}
+
+
+.layui-tab-item {
+    text-align: center;
+}
+
+.ht-box {
+    display: inline-block;
+    margin: 15px;
+    padding: 15px 0;
+    color: #fff;
+    width: 12%;
+}
+
+.ht-box p:first-child {
+    font-size: 40px;
+}
+
+.ht-box p:nth-child(2) {
+}
+
+
+
+/*表单*/
+.form-main {
+    max-width: 900px;
+    min-width: 900px;
+    text-align: left;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.img-cover {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+/*弹出框*/
+body .layer-css {
+    box-shadow: 0 0 8px #fff;
+}
+
+body .layer-css .layui-layer-title {
+    text-align: center;
+    background: #009688;
+    color: #fff;
+}
+
+body .layer-css .layui-layer-content {
+    padding: 20px 50px 5px 0;
+}
+
+body .layer-css-reply {
+    box-shadow: 0 0 8px #fff;
+}
+
+body .layer-css-reply .layui-layer-title {
+    text-align: center;
+    background: #009688;
+    color: #fff;
+}
+
+body .layer-css-reply .layui-layer-content {
+    padding: 20px;
+}
+
+/*快捷菜单 Win10风格*/
+.short-menu {
+    display: inline-block;
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.70);
+    position: fixed;
+    /*left: 100px;*/
+    /*right: 100px;*/
+    z-index: 999;
+    text-align: center;
+    /*height:50vh;*/
+    width: 100%;
+    padding: 0 15%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.windows-tile {
+    /*display: inline-block;*/
+    float: left;
+    margin: 2px;
+    text-align: center;
+    position: relative;
+    background: #009688;
+    color: #fff;
+}
+
+.windows-tile:hover {
+    -moz-box-shadow: inset 0 0 0px 2px #ddd;
+    -webkit-box-shadow: inset 0 0 0px 2px #ddd;
+    box-shadow: inset 0 0 0px 2px #ddd;
+}
+
+.windows-tile i {
+    font-size: 40px;
+}
+
+.windows-tile span {
+    font-size: 12px;
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    line-height: normal;
+}
+
+.windows-one {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+}
+
+.windows-two {
+    width: 204px;
+    height: 100px;
+    line-height: 100px;
+}
