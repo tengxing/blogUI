@@ -15,6 +15,7 @@
   <meta name="format-detection" content="telephone=no">
   
   <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+  <link rel="stylesheet" type="text/css" href="css/global.css">
   <script src="../js/jquery-3.1.1.min.js" type="text/javascript"></script>
 </head>
 <body class="layui-layout-body">
@@ -53,13 +54,13 @@
   <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-      <ul class="layui-nav layui-nav-tree"  lay-filter="leftnav">
+      <ul class="layui-nav layui-nav-tree" id="leftnav"  lay-filter="leftnav">
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">文章管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" data-url="page/404.html" data-id="1">列表一</a></dd>
-            <dd><a href="javascript:;" data-url="page/404.html" data-id="3">列表二</a></dd>
-            <dd><a href="javascript:;" data-url="page/404.html" data-id="2">列表三</a></dd>
+            <dd><a href="javascript:;" data-url="page/add.html" data-id="1">列表一</a></dd>
+            <dd><a href="javascript:;" data-url="page/list.html" data-id="3">列表二</a></dd>
+            <dd><a href="javascript:;" data-url="page/edit.html" data-id="2">列表三</a></dd>
             <dd><a href="">超链接</a></dd>
           </dl>
         </li>
@@ -92,7 +93,7 @@
           </div> -->
 
 
-          <div class="layui-tab-content">
+          <div class="layui-tab-content" style="    padding-top: 53px;">
               <div class="layui-tab-item layui-show" id = "loadhtml">
 
               <!-- <jsp:include page="init.jsp"/> -->

@@ -1,5 +1,5 @@
 
-
+var element;
 /**
   项目JS主入口
   以依赖Layui的layer和form模块为例
