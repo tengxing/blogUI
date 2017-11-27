@@ -13,6 +13,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
             if (title=='') {alert("请输入标题");return;}
             if (articleType=='') {alert("请选择文章类别");return;}
             var content = document.getElementById('editor').innerHTML;
+            content = JSON.stringify(quill.getContents());
             var data={
                 'title':title,
                 'typeName':articleType,

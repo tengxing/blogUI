@@ -15,7 +15,8 @@ window.onload=function(){
                     data = res.result;
                     $("#title").val(data.title);
                     $("#articleType").val(data.typeId);
-                    $("#editor").html(data.content);
+                    //$("#editor").html(data.content);
+                    quill.setContents(JSON.parse(data.content));
                     form.render(); //更新全部
                 }
             }
@@ -51,6 +52,7 @@ $("#save").click(function click() {
         return;
     }
     var content = document.getElementById('editor').innerHTML;
+    content = JSON.stringify(quill.getContents());
     var data = {
         'title': title,
         'typeName': articleType,
