@@ -16,7 +16,7 @@ window.onload=function(){
                     $("#title").val(data.title);
                     $("#articleType").val(data.typeId);
                     //$("#editor").html(data.content);
-                    quill.setContents(JSON.parse(data.content));
+                    editor.txt.html(data.content);
                     form.render(); //更新全部
                 }
             }
@@ -35,11 +35,6 @@ function GetQueryString(name){
 }
 
 $("#save").click(function click() {
-    console.info(quill.getContents());
-    /*quill.setContents([{ insert: 'Hello ' },
-          { insert: 'World!', attributes: { bold: true } },
-          { insert: '\n' }]
-          );*/
     var title = $("#title").val();
     var typeId = $("#articleType").val();
     var articleType = $("#articleType").text();
@@ -52,12 +47,14 @@ $("#save").click(function click() {
         return;
     }
     var content = document.getElementById('editor').innerHTML;
-    content = JSON.stringify(quill.getContents());
+        content = editor.txt.html();
+    var summary = editor.txt.text().substring(0,30);
     var data = {
         'title': title,
         'typeName': articleType,
         'typeId': typeId,
         'content': content,
+        'summary': summary,
         'id': id
     }
     $.post('http://localhost:8081/blog/article/save', data, function result(res) {
