@@ -13,13 +13,14 @@ layui.use(['form', 'layedit', 'laydate'], function(){
             if (title=='') {alert("请输入标题");return;}
             if (articleType=='') {alert("请选择文章类别");return;}
             var content = document.getElementById('editor').innerHTML;
-            content = editor.txt.html();
-            var summary = editor.txt.text().substring(0,30);
+            var contentDelta = JSON.stringify(quill.getContents());
+            var summary = quill.getText().substring(0,30);
             var data={
                 'title':title,
                 'typeName':articleType,
                 'typeId':typeId,
                 'content':content,
+                'contentDelta':contentDelta,
                 'summary':summary
             }
             $.post('http://localhost:8081/blog/article/save',data,function result(res){

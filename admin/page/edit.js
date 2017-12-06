@@ -16,7 +16,7 @@ window.onload=function(){
                     $("#title").val(data.title);
                     $("#articleType").val(data.typeId);
                     //$("#editor").html(data.content);
-                    editor.txt.html(data.content);
+                    quill.setContents(JSON.parse(data.contentDelta));
                     form.render(); //更新全部
                 }
             }
@@ -47,13 +47,14 @@ $("#save").click(function click() {
         return;
     }
     var content = document.getElementById('editor').innerHTML;
-        content = editor.txt.html();
-    var summary = editor.txt.text().substring(0,30);
+    var contentDelta = JSON.stringify(quill.getContents());
+    var summary = quill.getText().substring(0,30);
     var data = {
         'title': title,
         'typeName': articleType,
         'typeId': typeId,
         'content': content,
+        'contentDelta':contentDelta,
         'summary': summary,
         'id': id
     }
