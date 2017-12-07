@@ -85,7 +85,7 @@ function getBlogCategory() {
         categoryList = result;
         html=''
         for (var i = result.length - 1; i >= 0; i--) {
-            html+='<a href="'+baseUrl+'?page=1&typeId='+result[i]["id"]+'">'+result[i]["typeName"]+'</a>';
+            html+='<a href="'+baseUrl+'?page=1&typeId='+result[i]["id"]+'">'+result[i]["name"]+'</a>';
         }
         html+='<a href="'+baseUrl+'?page=1&typeId=">...</a>'
         $("#blogCategory").html(html);
