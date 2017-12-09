@@ -72,7 +72,10 @@ function blogDetil(id) {
 	    blog_tips:'前方评论区'
 	  }
 	})
-	$("#blogDetile").css("display","block");
+    //new Quill('#blogDetile', {theme: 'snow'}).setContents(JSON.parse(blogDetileex.contentDelta));
+	$("#blogDetile").css("display","block")
+        .find("pre").css("padding","5px 10px");
+    $("#blogDetile").find(".ql-tooltip").css("display","none");//解决quill显示自带一个bug
 	$(".pagination").css("display","none");
 	$("#getBlogList").css("display","none");
 }
