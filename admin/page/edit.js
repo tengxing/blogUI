@@ -48,7 +48,7 @@ $("#save").click(function click() {
     }
     var content = document.getElementById('editor').innerHTML;
     var contentDelta = JSON.stringify(quill.getContents());
-    var summary = quill.getText().substring(0,30);
+    var summary = quill.getText().substring(0,50)+"...";
     var data = {
         'title': title,
         'typeName': articleType,
