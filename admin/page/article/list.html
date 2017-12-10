@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	 <link rel="stylesheet" href="../../layui/css/layui.css"  media="all">
+     <script src="../../../js/jquery-3.1.1.min.js" type="text/javascript"></script>
+</head>
+<script>
+var url="http://www.layui.com/demo/table/user/";
+	server_url="http://localhost:8081/blog/article"
+</script>
+<body>
+<div class="layui-btn-group demoTable">
+  <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
+  <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
+  <button class="layui-btn" data-type="isAll">是否全选</button>
+</div>
+ 
+<table class="layui-hide" id="idTest" lay-filter="demo"></table>
+ 
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="titleTemplet">
+	<a href="http://yjxxclub.cn/blog/blog/articles/{{d.id}}.html" class="layui-table-link" target="_blank">{{ d.title }}</a>
+</script>
+<script type="text/html" id="releaseDateTemplet">
+  {{ a(d.releaseDate) }}
+</script>
+               
+          
+<script src="../../layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+function a(time){
+
+	return time;
+}
+function formatDate(now) {
+　　var year = now.getFullYear(),
+　　month = now.getMonth() + 1,
+　　date = now.getDate(),
+　　hour = now.getHours(),
+　　minute = now.getMinutes(),
+　　second = now.getSeconds();
+ 
+　　return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+}
+layui.use(['layer', 'table', 'element'], function(){
+
+  var width = window.innerWidth*1;
+  var table = layui.table;
+  table.render({
+    elem: '#idTest'
+    ,url:"http://localhost:8081/blog/article/findByPage"
+    ,request: {
+	  pageName: 'page' //页码的参数名称，默认：page
+	  ,limitName: 'size' //每页数据量的参数名，默认：limit
+	},response: {
+	  statusName: 'status' //数据状态的字段名称，默认：code
+	  ,statusCode: 200 //成功的状态码，默认：0
+	  ,msgName: 'msg' //状态信息的字段名称，默认：msg
+	  ,countName: 'count' //数据总数的字段名称，默认：count
+	  ,dataName: 'result' //数据列表的字段名称，默认：data
+	} 
+    ,height:680
+    ,width:width
+    ,limit:15
+    ,cols: [[
+      {type:'checkbox',fixed:true}
+      ,{field:'id', width:80, title: 'ID', sort: true}
+      ,{field:'title', width:200, title: '标题',templet: '#titleTemplet'}
+      ,{field:'typeName', width:100, title: '类别'}
+      ,{field:'summary', width:400, title: '概要', sort: true}
+      ,{field:'clickHit', title: '阅读量', minWidth: 20}
+      ,{field:'replyHit', title: '回复数', minWidth: 20}
+      ,{field:'keyWord', title: '标签', minWidth: 100}
+      ,{field:'flag', title: '标识', minWidth: 50}
+      ,{field:'releaseDate', width:200, title: '发布时间', sort: true,templet: '#releaseDateTemplet'}
+      ,{fixed: 'right', width:200, align:'center',title: '操作',  sort: true,toolbar: '#barDemo'}
+    ]]
+    ,page: true
+  });
+  //监听表格复选框选择
+  table.on('checkbox(demo)', function(obj){
+    console.log(obj)
+  });
+  //监听工具条
+  table.on('tool(demo)', function(obj){
+    var data = obj.data;
+    if(obj.event === 'detail'){
+      window.open("http://yjxxclub.cn/blog/blog/articles/"+ data.id +".html");
+    } else if(obj.event === 'del'){
+      layer.confirm('真的删除行么', function(index){
+        
+        $.post(server_url+"/deleteById",{"id":data.id},function result(res) {
+        	res = JSON.parse(res);
+        	if (res.status) {
+        		layer.msg("删除成功");
+        		obj.del();//可以重新渲染报个
+        	}
+        });
+        layer.close(index);
+      });
+    } else if(obj.event === 'edit'){
+      //layer.alert('编辑行：<br>'+ JSON.stringify(data))
+      //layer.load(1); //风格1的加载
+      layer.open({
+		  type: 2, 
+      title:'修改文章',
+		  skin:"layui-tab-content",
+		  area:["960px","880px"],
+		  offset: ['0px', '0px'],
+		  content: 'edit.html?id='+data.id, //这里content是一个普通的String
+		  success: function(layero, index){
+		    console.log(layero, index);
+		  }
+
+		});
+      //layer.close(1);
+    }
+  });
+  
+  var $ = layui.$, active = {
+    getCheckData: function(){ //获取选中数据
+      var checkStatus = table.checkStatus('idTest')
+      ,data = checkStatus.data;
+      layer.alert(JSON.stringify(data));
+    }
+    ,getCheckLength: function(){ //获取选中数目
+      var checkStatus = table.checkStatus('idTest')
+      ,data = checkStatus.data;
+      layer.msg('选中了：'+ data.length + ' 个');
+    }
+    ,isAll: function(){ //验证是否全选
+      var checkStatus = table.checkStatus('idTest');
+      layer.msg(checkStatus.isAll ? '全选': '未全选')
+    }
+  };
+  
+  $('.demoTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+</script>
+</body>
+</html>
