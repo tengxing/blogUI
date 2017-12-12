@@ -6,7 +6,7 @@ window.onload=function(){
     //id = 13;
     if (id!="") {
         $.ajax({
-            url:"http://localhost:8081/blog/article/findById",
+            url:"http://localhost:8080/blog/article/findById",
             type:"post",
             data:{"id":id},
             success:function (res){
@@ -58,7 +58,7 @@ $("#save").click(function click() {
         'summary': summary,
         'id': id
     }
-    $.post('http://localhost:8081/blog/article/save', data, function result(res) {
+    $.post('http://localhost:8080/blog/article/save', data, function result(res) {
         res = JSON.parse(res);
         if (res.status == 200) {
             alert("修改成功");

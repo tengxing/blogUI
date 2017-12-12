@@ -8,7 +8,7 @@
 </head>
 <script>
 var url="http://www.layui.com/demo/table/user/";
-	server_url="http://localhost:8081/blog/article"
+	server_url="http://localhost:8080/blog/article"
 </script>
 <body>
 <div class="layui-btn-group demoTable">
@@ -56,7 +56,7 @@ layui.use(['layer', 'table', 'element'], function(){
   var table = layui.table;
   table.render({
     elem: '#idTest'
-    ,url:"http://localhost:8081/blog/article/findByPage"
+    ,url:"http://localhost:8080/blog/article/findByPage"
     ,request: {
 	  pageName: 'page' //页码的参数名称，默认：page
 	  ,limitName: 'size' //每页数据量的参数名，默认：limit

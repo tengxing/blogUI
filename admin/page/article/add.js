@@ -23,7 +23,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
                 'contentDelta':contentDelta,
                 'summary':summary
             }
-            $.post('http://localhost:8081/blog/article/save',data,function result(res){
+            $.post('http://localhost:8080/blog/article/save',data,function result(res){
                 res = JSON.parse(res);
                 if (res.status==200) {
                     alert("添加成功");

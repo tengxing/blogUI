@@ -122,7 +122,7 @@
 
 
 <script type="text/javascript">
-   $.post("http://localhost:8081/blog/articleType/findAll",{},function result(res) {
+   $.post("http://localhost:8080/blog/articleType/findAll",{},function result(res) {
       res = JSON.parse(res);
       var data;
       var html='<option value="">文章类别</option>';
